@@ -1,0 +1,10 @@
+# Ansible commands
+ansible all -m ping
+ansible windows -m win_ping
+ansible windows -m setup
+ansible-playbook iis_site.yml
+
+# Powershell commands
+winrm quickconfig -transport:https
+winrm enumerate winrm/config/Listener
+
