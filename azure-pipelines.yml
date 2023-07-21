@@ -4,7 +4,7 @@ trigger:
 pool:
   name: Default
   demands:
-    - agent.name -equals  'lin-control'
+    - agent.name -equals lin-control
 
 stages:
   - stage: deploy
