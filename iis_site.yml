@@ -1,0 +1,24 @@
+- hosts: windows
+  gather_facts: no
+  tasks:
+    - name: Create directory for the site
+      ansible.windows.win_file:
+        path: C:\sites\site1
+        state: directory
+
+    - name: Copy a single file
+      ansible.windows.win_copy:
+        src: ./index.html
+        dest: C:\sites\site1
+
+    - name: IIS sites configure
+      win_iis_website:
+        name: site1
+        state: started
+        port: 80
+        ip: 127.0.0.1
+        hostname: site1.local
+        application_pool: DefaultAppPool
+        physical_path: C:\sites\site1
+        parameters: logfile.directory:C:\sites\logs
+      register: website
