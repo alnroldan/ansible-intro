@@ -1,2 +1,18 @@
 trigger:
   - main
+
+pool:
+  name: Default
+  demands:
+    - agent.name -equals  'lin-control'
+
+stages:
+  - stage: deploy
+    displayName: Deploy with Ansible
+    jobs:
+      - job:
+
+        steps:
+          - script: |
+              ansible-playbook iis_site.yml
+            displayName: "Playbook running"
